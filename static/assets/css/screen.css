@@ -561,7 +561,7 @@ a.nav-home, a.nav-blog {
    .blog-title {
 		font-size: 2.281rem;
 	}
-	
+
 	.blog-description {
 	   font-size: 0.889rem;
 	}
@@ -569,4 +569,15 @@ a.nav-home, a.nav-blog {
 
 video {
 	max-width: 100%;
+}
+
+/* ==========================================================================
+   13. Dark Mode
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: #1c1e20;
+  }
+
 }
