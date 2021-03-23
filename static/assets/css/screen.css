@@ -20,6 +20,18 @@ http://modularscale.com/
 8:9 major second
 */
 
+:root {
+    --light-background-main: #fff;
+    --light-background-contrast: #e1e3e6;
+    --highlight-color: #FC7E0F;
+    --dark-background-main: #1c1e20;
+    --dark-background-contrast: #3b3d40;
+    --heading-font: 'Quicksand', sans-serif;
+    --body-font: 'Open Sans', sans-serif;
+    --font-color-light: #3A4145;
+    --font-color-dark: white;
+  }
+
 html {
     height: 100%;
     max-height: 100%;
@@ -38,17 +50,18 @@ body {
     width: 80%;
     max-width: 650px;
     margin: 0 auto;
-    font-family: "Lato", sans-serif;
-	font-weight: 300;
+    font-family: var(--body-font);
+	  font-weight: 300;
     font-size: 1rem;
     line-height: 1.7;
-    color: #3A4145;
+    color: var(--font-color-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Bree Serif", serif;
-	font-weight: 500;
-	margin-bottom: 0;
+    font-family: var(--heading-font);
+	  font-weight: 500;
+	  margin-bottom: 0;
+    color: #3A4145;
 }
 
 h1 {
@@ -101,18 +114,30 @@ pre code {
 }
 
 blockquote {
-	margin: 0 2em;
-	color: #9EABB3;
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid var(--highlight-color);
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
 }
 
-blockquote p {
-    margin: 0.8em 0;
-    font-style: italic;
+blockquote::before {
+  font-family:Arial;
+  content: "\201C";
+  color: var(--highlight-color);
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
 }
 
-blockquote cite {
-	font-style: normal;
-	font-size: 0.889rem;
+blockquote::after{
+  content: '';
 }
 
 hr {
@@ -123,33 +148,46 @@ hr {
 }
 
 /* Links */
-.post a {
-    color: #FC7E0F;
-    text-decoration: none;
+
+.post a, .post a:visited {
+  text-decoration: none;
+  color: var(--font-color-light);
+  box-shadow: inset 0 -3px 0 0 var(--highlight-color);
+  padding: 1px 2px;
 }
 
 .post a:hover {
-    text-decoration: underline;
+  color: white;
+  text decoration: none;
+  background-color: var(--highlight-color);
+  padding: 1px 2px;
 }
 
-.post a:visited {
-    color: #9EABB3;
+a.read-more, a.read-more:visited {
+    color: var(--highlight-color) !important;
     text-decoration: none;
+    box-shadow: none;
 }
-
-a.read-more, a.read-more:hover, a.read-more:visited {
-    color: #FC7E0F;	/* #DA1F15, #F17F33 */
+.read-more a:hover {
+    color: white;
     text-decoration: none;
+    background-color: var(--highlight-color);
+    padding: 1px 2px;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-	color: #3A4145;
 	text-decoration: none;
+  color: var(--font-color-light);
 }
 
-.post-title a {
-	color: #3A4145 !important;
-	text-decoration: none !important;
+.post-title a, .post-title a:visited {
+	text-decoration: none;
+  color: var(--font-color-light);
+  box-shadow: none;
+}
+
+a.u-author.h-card {
+  box-shadow: none;
 }
 
 /* Tables and dictionaries (straight up ripped out of the Casper stylesheet with minor modifications) */
@@ -232,15 +270,11 @@ dl dd {
 .blog-title {
     margin: 0;
     padding: 0;
-    font-family: "Lato", sans-serif;
-	font-weight: 300;
+    font-family: var(--heading-font);
+	  font-weight: 500;
     font-size: 2.887rem;
     vertical-align: middle;
     line-height: 1;
-}
-
-.blog-title a {
-	font-color: inherit;
 }
 
 .blog-description {
@@ -263,8 +297,12 @@ dl dd {
 }
 
 .nav {
+  border-bottom: solid 2px var(--highlight-color);
+	border-top: solid 2px var(--highlight-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
 	text-transform: uppercase;
-	font-size: .889rem;
+	font-size: 1.2rem;
 }
 
 .nav a {
@@ -274,7 +312,8 @@ dl dd {
 }
 
 .nav a:hover {
-	color: #FC7E0F;
+	color: white;
+  background-color: var(--highlight-color)
 }
 
 a.nav-current {
@@ -360,6 +399,11 @@ a.nav-home, a.nav-blog {
 .post-meta {
 	text-transform: uppercase;
 	font-size: .79rem;
+}
+
+.post-meta a {
+  text-decoration: none;
+  box-shadow: none;
 }
 
 .post-footer {
@@ -573,11 +617,62 @@ video {
 
 /* ==========================================================================
    13. Dark Mode
-   ========================================================================== */
+========================================================================== */
 @media (prefers-color-scheme: dark) {
   body {
-    color: white;
-    background: #1c1e20;
+    color: var(--font-color-dark);
+    background: var(--dark-background-main);
+  }
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .blog-title a, .post-title a {
+    color: var(--font-color-dark) !important;
   }
 
+  .post a, .post a:visited {
+    color: var(--font-color-dark);
+  }
+
+  a.read-more, a.read-more:visited {
+    color: var(--highlight-color);
+  }
+
+  blockquote a {
+    color: var(--font-color-light);
+  }
+
+  .microblog_text {
+    color: var(--font-color-light)
+  }
+  .microblog_user {
+    color: var(--font-color-light)
+  }
+
+}
+
+/*=========================================
+14. Replies
+=========================================== */
+.microblog_conversation {
+  margin-top: 20px;
+}
+
+.microblog_post {
+  padding: 10px 20px 10px;
+  margin-bottom: 10px;
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.microblog_avatar {
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+.microblog_time {
+  font-size: 13px;
+  color: gray;
+}
+
+.microblog_time a {
+  color: gray;
+  text-decoration: none;
 }
