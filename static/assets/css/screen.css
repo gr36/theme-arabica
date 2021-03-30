@@ -118,9 +118,8 @@ blockquote {
   width:60%;
   margin:50px auto;
   font-style:italic;
-  padding:1.2em 30px 1.2em 75px;
+  padding:1.2em 30px 1px 50px;
   border-left:8px solid var(--highlight-color);
-  line-height:1.6;
   position: relative;
 }
 
@@ -349,15 +348,32 @@ a.nav-home, a.nav-blog {
 }
 
 .site-footer a {
-	color: #FC7E0F;
+	color: var(--highlight-color);
 	text-decoration: none;
   box-shadow: none;
 }
 
 .site-footer a:hover {
-	color: #9EABB3;
+	color: white;
+  background: var(--highlight-color)
 }
 
+.copyright a {
+  color: var(--highlight-color);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.copyright a:hover {
+  color: white;
+  background: var(--highlight-color)
+}
+
+.site-footer img {
+   padding-right: 5px;
+   width: 10px;
+   height: auto;
+}
 
 /* RSS - enable to replace the simple RSS icon with a round button */
 
@@ -392,7 +408,6 @@ a.nav-home, a.nav-blog {
 .post {
     position: relative;
     margin: 2rem auto;
-    padding-bottom: 2rem;
     word-break: break-word;
     hyphens: auto;
 }
