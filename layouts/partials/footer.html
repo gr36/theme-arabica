@@ -1,9 +1,11 @@
 <footer class="site-footer">
-  <section class="rss"><a class="subscribe-button icon-feed" href="/feed.xml"></a></section>
-  {{ with .Site.Params.twitter }}<section class="twitter"><a class="icon-twitter" href="https://twitter.com/{{ . }}"> {{ . }}</a></section>{{ end }}
-  {{ with .Site.Params.facebook }}<section class="facebook"><a class="icon-facebook" href="https://www.facebook.com/{{ . }}"> {{ . }}</a></section>{{ end }}
-  <section class="copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</section>
-  <section class="poweredby"><a href="http://thedarkroast.com/arabica">Arabica</a> theme by Sean Lunsford. Published with <a href="https://gohugo.io">Hugo</a> and <a href="https://micro.blog/">Micro.blog</a>.</section>
+  <section class="rss">Follow Me: <a class="subscribe-button icon-feed" style="padding-right: 20px" href="https://gr36.micro.blog/categories/main/feed.xml"></a><a class="icon-twitter" href="https://twitter.com/gr36"></a></section>
+
+<section class="copyright"><img class="u-photo selfie" src="https://micro.blog/gr36/avatar.jpg" alt="Greg Morris" /><a class="h-card u-url p-author" rel="me" href="https://gr36.com/">Greg Morris aka <span class="p-nickname">GR36</span></a>
+| <a href="https://www.gr36.com/archive/" class="footer-link">All Posts</a>
+| <a href="https://www.gr36.com/replies/" class="footer-link">Replies</a>
+</section>
+
 </footer>
 <!-- custom js -->
 {{ range .Site.Params.customJS }}

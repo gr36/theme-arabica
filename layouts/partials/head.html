@@ -3,11 +3,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- Page Meta -->
-    <title>
+  <title>
       {{ block "title" . }}
       {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} - {{ .Title }}{{ end }}
       {{ end }}
-	</title>
+  </title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,26 +15,22 @@
     {{ if .RSSLink -}}
       <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
       <link href="{{ "podcast.xml" | absURL }}" rel="alternate" type="application/rss+xml" title="Podcast" />
-      <link rel="alternate" type="application/json" title="{{ .Site.Title }}" href="{{ "feed.json" | absURL }}" />
       <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
     {{ end -}}
 
     <!-- Styles and Fonts -->
+<link rel="icon" href="https://www.gr36.com/uploads/2021/c2a84aef47.png">
+	<link rel="stylesheet" id="graphy-font-css" href="https://fonts.googleapis.com/css?family=Quicksand%3A700%7CQuicksand%7COpen+Sans&subset=latin%2Clatin-ext" 	type="text/css" media="all">
     <link rel="stylesheet" type="text/css" href="{{ "assets/css/normalize.css" | relURL }}" />
     <link rel="stylesheet" type="text/css" href="{{ "assets/css/icons.css" | relURL }}" />
     <link rel="stylesheet" type="text/css" href="{{ "assets/css/screen.css" | relURL }}" />
     <link rel="stylesheet" type="text/css" href="{{ "custom.css" | relURL }}" />
 
+<!-- Social and Feeds -->
 	<link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
-	{{ with .Site.Params.twitter_username }}
-		<link rel="me" href="https://twitter.com/{{ . }}" />
-	{{ end }}
-	{{ with .Site.Params.github_username }}
-		<link rel="me" href="https://github.com/{{ . }}" />
-	{{ end }}
-	{{ with .Site.Params.instagram_username }}
-		<link rel="me" href="https://instagram.com/{{ . }}" />
-	{{ end }}
+	<link rel="me" href="https://twitter.com/gr36" />
+	<link rel="me" href="https://github.com/gr36" />
+	<link rel="me" href="https://instagram.com/gr36_pixels" />
 	<link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
 	<link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
 	<link rel="micropub" href="https://micro.blog/micropub" />
@@ -42,21 +38,44 @@
 	<link rel="webmention" href="https://micro.blog/webmention" />
 	<link rel="subscribe" href="https://micro.blog/users/follow" />
 
-    {{ if .Site.Params.replaceGoogleFonts }}
-    <link href="https://{{ .Site.Params.replaceGoogleFonts }}/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" rel="stylesheet">
-    {{ else }}
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700" rel="stylesheet">
-    {{ end }}
+<!-- Open Graph -->
+		<meta name="twitter:card" content="summary" />
 
-    <!-- Bigfoot - popover footnotes -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ "assets/bigfoot/dist/bigfoot.js" | relURL }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ "assets/bigfoot/dist/bigfoot-number.css" | relURL }}" />
-    <script type="text/javascript">
-        $.bigfoot();
-    </script>
-    <!-- custom css -->
-    {{ range .Site.Params.customCSS }}
-    <link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
-    {{ end }}
+    <!-- Titles -->
+        {{ with .Site.Params.title }}
+			<meta property="og:site_name" content="{{ . }}" />
+		{{ end }}
+		{{ with .Title }}
+			<meta name="twitter:title" content="{{ . }}" />
+        	<meta property="og:title" content="{{ . }}" />
+		{{ else }}
+ 			<meta name="twitter:title" content="{{ .Site.Title }}" />
+        	<meta property="og:title" content="{{ .Site.Title }}" />
+		{{ end }}
+			<meta name="twitter:description" content="{{ .Summary }}" />
+			<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+			<meta property="og:type" content="{{ with .Title }}article{{ else }}website{{ end }}" />
+			<meta property="og:url" content="{{ .Permalink }}" />
+	<!-- Images -->
+			{{ with .Params.images }}
+   				{{ range first 6 . }}
+       				<meta property="og:image" content="{{ . | absURL }}" />
+        			<meta name="twitter:image" content="{{ . }}" />
+    			{{ end }}
+			{{ else }}
+				<meta property="og:image" content="https://www.gr36.com/uploads/2021/a2b5ba7293.png" />
+        		<meta name="twitter:image" content="https://www.gr36.com/uploads/2021/a2b5ba7293.png" />
+			{{ end }}
+
+			{{ with .Params.audio }}
+    			<meta property="og:audio" content="{{ . }}" />
+			{{ end }}
+
+     <!-- Video -->
+			{{ with .Params.videos }}
+  				{{ range first 1 . }}
+        			<meta property="og:video" content="{{ . | absURL }}" />
+    			{{ end }}
+			{{ end }}
+
 </head>

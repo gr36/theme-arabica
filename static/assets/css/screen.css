@@ -70,6 +70,7 @@ h1 {
 
 h2 {
 	font-size: 1.602rem;
+  font-weight: 600;
 }
 
 h3 {
@@ -181,6 +182,9 @@ a.read-more, a.read-more:visited {
     box-shadow: none;
   }
 
+#photos a {
+  box-shadow: none;
+}
 
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -375,33 +379,7 @@ a.nav-home, a.nav-blog {
    height: auto;
 }
 
-/* RSS - enable to replace the simple RSS icon with a round button */
-
-/*
-.site-footer .rss {
-	margin: 1rem auto;
-	width: 1.7rem;
-	height: 1.6rem;
-}
-
-.site-footer .rss a {
-	display: block;
-	height: 100%;
-	width: 100%;
-	margin-left: -.2rem;
-	padding: .35rem .1rem 0.05rem .2rem;
-	vertical-align: middle;
-	border: 1px #FC7E0F solid;
-	border-radius: 1.2rem;
-}
-
-.site-footer .rss a:hover {
-	color: #ffffff;
-	background: #FC7E0F;
-}
-*/
-
-/*	==========================================================================
+==========================================================================
 	Posts
 	========================================================================== */
 
@@ -417,9 +395,10 @@ a.nav-home, a.nav-blog {
 }
 
 .post-title {
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	line-height: 1;
   font-size: 2.5rem;
+  font-weight: 500;
 }
 
 .post-meta {
@@ -691,6 +670,7 @@ video {
 
   h3 {
   color: var(--highlight-color);
+  font-weight: 600;
   }
 
   .post a, .post a:visited, a, a:visited {
@@ -757,4 +737,56 @@ video {
   color: gray;
   text-decoration: none;
   box-shadow: none;
+}
+
+/*=========================================
+15. Photos Page
+=========================================== */
+
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           1em;
+}
+
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+  margin: 5px;
+}
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
 }

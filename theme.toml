@@ -1,18 +1,18 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "Arabica"
+name = "GR36"
 license = "MIT"
 licenselink = "https://github.com/nirocfz/arabica/blob/master/LICENSE"
-description = "A port of the Ghost arabica theme for Hugo"
-homepage = "https://github.com/nirocfz/arabica"
+description = "Arabica theme for Hugo with modifications by Greg Morris"
+homepage = "https://gr36.com"
 tags = ["blog", "minimal"]
 features = ["smooth", "minimal"]
-min_version = "0.41"
+min_version = "1.0"
 
 [author]
-  name = "Chen Fangzhou"
-  homepage = "https://fixatom.com"
+  name = "Greg Morris"
+  homepage = "https://gr36.com"
 
 # If porting an existing theme
 [original]
